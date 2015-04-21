@@ -4,7 +4,7 @@
 		private $content;
 		private $tag;
 
-		public function __construct ($tag, $class = false) {
+		public function Element ($tag, $class = false) {
 			$this->attributes = array();
 			$this->content = array();
 			$this->tag = $tag;

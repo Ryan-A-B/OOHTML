@@ -3,7 +3,7 @@
 		private $attributes;
 		private $tag;
 
-		public function __construct ($tag, $class = false) {
+		public function ContentlessElement ($tag, $class = false) {
 			$this->attributes = array();
 			$this->tag = $tag;
 

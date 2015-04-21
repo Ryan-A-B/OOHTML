@@ -2,7 +2,7 @@
 	class PlainText extends Content {
 		private $text;
 
-		public function __construct ($text) {
+		public function PlainText ($text) {
 			$this->text = $text;
 		}
 

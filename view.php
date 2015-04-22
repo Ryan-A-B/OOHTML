@@ -1,16 +1,25 @@
 <?php
+    require_once('element.php');
+    require_once('contentlessElement.php');
     require_once('plainText.php');
 
     class View {
-        public static $content = array();
+        private static $html;
 
         public static $styleFolder;
         public static $scriptFolder;
-        public static $title;
 
         public static $head;
         public static $body;
         public static $foot;
+
+        public static function init () {
+            self::$html = new Element('html');
+
+            self::$head = self::$html->createElement('head');
+            self::$body = self::$html->createElement('body');
+            self::$foot = self::$html->createElement('footer');
+        }
 
         public static function addStyle ($style) {
             $tmp = self::$head->createContentlessElement('link');
@@ -24,19 +33,10 @@
             $tmp->addAttribute('src', self::$scriptFolder . $script . '.js');
         }
         
-        public static function render ($view) {
-            foreach (self::$content as $element) {
-                echo $element->generateHTML();
-            }
+        public static function render () {
+            echo ('<!doctype html>');
+            echo self::$html->generateHTML();
         }
     }
-
-    View::$content[] = new PlainText('<!doctype html>');
-    
-    $html = new Element('html');
-    View::$content[] = $html;
-
-    View::$head = $html->createElement('head');
-    View::$body = $html->createElement('body');
-    View::$foot = $html->createElement('footer');
+    View::init();
 ?>

@@ -1,9 +1,11 @@
 <?php
-	class ContentlessElement extends Content {
-		private $attributes;
-		private $tag;
+    require_once('content.php');
 
-		public function ContentlessElement ($tag, $class = false) {
+	class ContentlessElement extends Content {
+		protected $attributes;
+		protected $tag;
+
+		public function __construct ($tag, $class = false) {
 			$this->attributes = array();
 			$this->tag = $tag;
 

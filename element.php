@@ -1,21 +1,13 @@
 <?php
-	class Element extends Content {
-		private $attributes;
+    require_once('contentlessElement.php');
+
+	class Element extends ContentlessElement {
 		private $content;
-		private $tag;
 
-		public function Element ($tag, $class = false) {
-			$this->attributes = array();
+		public function __construct ($tag, $class = false) {
+            parent::__construct($tag, $class);
+
 			$this->content = array();
-			$this->tag = $tag;
-
-            if ($class !== false) {
-                $this->attributes['class'] = $class;
-            }
-		}
-
-		public function addAttribute ($attribute, $value) {
-			$this->attributes[$attribute] = $value;
 		}
 
 		public function createElement ($tag, $class = false) {

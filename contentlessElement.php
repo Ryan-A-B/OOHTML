@@ -5,18 +5,14 @@
 		protected $attributes;
 		protected $tag;
 
-		public function __construct ($tag, $class = false) {
+		public function __construct ($tag) {
 			$this->attributes = array();
 			$this->tag = $tag;
-
-            if ($class !== false) {
-                $this->attributes['class'] = $class;
-            }
 		}
 
-		public function addAttribute ($attribute, $value) {
-			$this->attributes[$attribute] = $value;
-		}
+        public function __set ($attribute, $value) {
+            $this->attributes[$attribute] = $value;
+        }
 
 		public function generateHTML () {
 			$html = "<{$this->tag}";

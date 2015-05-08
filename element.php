@@ -4,20 +4,20 @@
 	class Element extends ContentlessElement {
 		private $content;
 
-		public function __construct ($tag, $class = false) {
-            parent::__construct($tag, $class);
+		public function __construct ($tag) {
+            parent::__construct($tag);
 
 			$this->content = array();
 		}
 
-		public function createElement ($tag, $class = false) {
-			$element = new Element($tag, $class);
+		public function createElement ($tag) {
+			$element = new Element($tag);
 			$this->content[] = $element;
 			return $element;
 		}
 
-		public function createContentlessElement ($tag, $class = false) {
-			$element = new ContentlessElement($tag, $class);
+		public function createContentlessElement ($tag) {
+			$element = new ContentlessElement($tag);
 			$this->content[] = $element;
 			return $element;
 		}

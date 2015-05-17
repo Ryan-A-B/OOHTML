@@ -23,14 +23,14 @@
 
         public static function addStyle ($style) {
             $tmp = self::$head->createContentlessElement('link');
-            $tmp->addAttribute('rel', 'stylesheet');
-            $tmp->addAttribute('href', self::$styleFolder . $style . '.css');
+            $tmp->rel = 'stylesheet';
+            $tmp->href = self::$styleFolder . $style . '.css';
         }
         
         public static function addScript ($script) {
             $tmp = self::$foot->createElement('script');
-            $tmp->addAttribute('type', 'text/javascript');
-            $tmp->addAttribute('src', self::$scriptFolder . $script . '.js');
+            $tmp->type = 'text/javascript';
+            $tmp->src = self::$scriptFolder . $script . '.js';
         }
         
         public static function render () {

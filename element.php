@@ -22,6 +22,14 @@
 			return $element;
 		}
 
+        public function prepend (Content $content) {
+            array_unshift($this->content, $content);
+        }
+
+        public function append (Content $content) {
+            $this->content[] = $content;
+        }
+
 		public function addContent (Content $content) {
 			$this->content[] = $content;
 		}

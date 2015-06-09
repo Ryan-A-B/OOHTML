@@ -16,8 +16,14 @@
 
 		public function generateHTML () {
 			$html = "<{$this->tag}";
-			while (list($attribute, $value) = each($this->attributes)) {
-				$html .= " $attribute='$value'";
+            foreach ($this->attributes as $attribute => $value) {
+                if (is_bool($value)) {
+                    if ($value === true) {
+                        $html .= " $attribute";
+                    }
+                } else {
+				    $html .= " $attribute='$value'";
+                }
 			}
 			$html .= '>';
 

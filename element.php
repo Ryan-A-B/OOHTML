@@ -35,11 +35,7 @@
 		}
 
 		public function generateHTML () {
-			$html = "<{$this->tag}";
-			while (list($attribute, $value) = each($this->attributes)) {
-				$html .= " $attribute='$value'";
-			}
-			$html .= '>';
+            $html = parent::generateHTML();
 
 			foreach ($this->content as $element) {
 				$html .= $element->generateHTML();

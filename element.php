@@ -36,7 +36,13 @@
                 $this->content[] = $content;
             }
 
-            public function addContent (Content $content) {
+            public function addContent ($content) {
+                if (gettype($content) == "string") {
+                    $content = new PlainText($content);
+                }
+                if (!is_subclass_of($content, 'oohtml\Content')) {
+                    throw new \Exception("Content must be of type string or Content");
+                }
                 $this->content[] = $content;
             }
 

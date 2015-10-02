@@ -1,7 +1,9 @@
 <?php
+    namespace oohtml;
+
     require_once('content.php');
 
-    if (!class_exists('ContentlessElement')) {
+    if (!class_exists('ContentlessElement', false)) {
         class ContentlessElement extends Content {
             // Static Members and Functions
             protected static $customElements;

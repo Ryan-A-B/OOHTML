@@ -1,4 +1,6 @@
 <?php
+    namespace oohtml;
+
     Element::createCustomElement('container', 'div', [
         'class' => 'container-fluid'
     ]);
@@ -52,5 +54,21 @@
 
     Element::createCustomElement('carousel-item', 'div', [
         'class' => 'item'
+    ]);
+
+    Element::createCustomElement("panel", "div", [
+        "class" => "panel panel-default"
+    ]);
+
+    Element::createCustomElement("panel-heading", "div", [
+        "class" => "panel-heading"
+    ]);
+
+    Element::createCustomElement("panel-title", "div", [
+        "class" => "panel-title text-center"
+    ]);
+
+    Element::createCustomElement("panel-body", "div", [
+        "class" => "panel-body"
     ]);
 ?>

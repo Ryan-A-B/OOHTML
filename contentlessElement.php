@@ -65,6 +65,10 @@
                 }
             }
 
+            public function __get ($attribute) {
+                return $this->attributes[$attribute];
+            }
+
             public function generateHTML () {
                 $html = "<{$this->tag}";
                 foreach ($this->attributes as $attribute => $value) {

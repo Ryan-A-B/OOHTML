@@ -21,7 +21,7 @@
 
                 self::$head = self::$html->createElement('head');
                 self::$body = self::$html->createElement('body');
-                self::$foot = self::$html->createElement('footer');
+                self::$foot = new Element('footer');
             }
 
             public static function addStyle ($style) {
@@ -37,6 +37,8 @@
             }
             
             public static function render () {
+                self::$body->addContent(self::$foot);
+
                 echo ('<!doctype html>');
                 echo self::$html->generateHTML();
             }

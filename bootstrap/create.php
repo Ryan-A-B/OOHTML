@@ -21,7 +21,7 @@
                 }
             }
 
-            private static function panel ($title, \oohtml\Element $parent = null, $userOptions = array()) {
+            private static function panel ($title, \oohtml\Element $parent = null, array $userOptions = array()) {
                 $defaultOptions = [
                     "panel" => [
                         "class" => "panel-default"
@@ -61,6 +61,24 @@
                 ]);
 
                 return [$parent, $panel->panel, $panel, $elementOptions];
+            }
+
+            private static function modal (\oohtml\Element $parent = null, array $userOptions = array()) {
+                $modal = new \StdClass();
+
+                $modal->modal = new \oohtml\Element("div", [
+                    "class" => "modal fade"
+                ]);
+
+                $modal->dialog = $modal->modal->createElement("div", [
+                    "class" => "modal-dialog"
+                ]);
+
+                $modal->content = $modal->dialog->createElement("div", [
+                    "class" => "modal-content"
+                ]);
+
+                return [$parent, $modal->modal, $modal, $userOptions];
             }
 
             public static function __callStatic ($func, $args) {

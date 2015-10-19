@@ -2,26 +2,8 @@
     namespace oohtml\bootstrap;
 
     if (!class_exists("Create", false)) {
-        class Create {
-            private static function applyOptions ($item, $elementOptions) {
-                foreach ($elementOptions as $element => $options) {
-                    foreach ($options as $option => $value) {
-                        if ($option == "class") {
-                            $item->$element->$option = "{$item->$element->$option} $value";
-                        } else {
-                            $item->$element->$option = $value;
-                        }
-                    }
-                }
-            }
-
-            private static function addToParent ($parent, $item) {
-                if (!is_null($parent)) {
-                    $parent->addContent($item);
-                }
-            }
-
-            private static function panel ($title, \oohtml\Element $parent = null, array $userOptions = array()) {
+        class Create extends \oohtml\Create {
+            protected static function panel ($title, \oohtml\Element $parent = null, array $userOptions = array()) {
                 $defaultOptions = [
                     "panel" => [
                         "class" => "panel-default"
@@ -63,7 +45,7 @@
                 return [$parent, $panel->panel, $panel, $elementOptions];
             }
 
-            private static function modal (\oohtml\Element $parent = null, array $userOptions = array()) {
+            protected static function modal (\oohtml\Element $parent = null, array $userOptions = array()) {
                 $modal = new \StdClass();
 
                 $modal->modal = new \oohtml\Element("div", [
@@ -79,15 +61,6 @@
                 ]);
 
                 return [$parent, $modal->modal, $modal, $userOptions];
-            }
-
-            public static function __callStatic ($func, $args) {
-                list($parent, $child, $item, $options) = call_user_func_array("self::$func", $args);
-
-                self::applyOptions($item, $options);
-                self::addToParent($parent, $child);
-                
-                return $item;
             }
         }
     }

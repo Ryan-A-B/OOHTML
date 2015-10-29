@@ -24,14 +24,12 @@
             $this->template = (object)compact("base", "toggle", "menu");
         }
 
-        public function addButton ($text, $options) {
+        public function add ($element, $text, $options) {
             $menuItem = $this->template->menu->createElement("li");
 
-            $button = $menuItem->createElement("button", array_merge([
-                "type" => "button"
-            ], $options));
-            $button->addContent($text);
+            $element = $menuItem->createElement($element, $options);
+            $element->addContent($text);
 
-            return $button;
+            return $element;
         }
     }

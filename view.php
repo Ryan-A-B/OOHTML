@@ -11,6 +11,7 @@
 
             public static $styleFolder;
             public static $scriptFolder;
+            public static $suffix;
 
             public static $head;
             public static $body;
@@ -27,13 +28,13 @@
             public static function addStyle ($style) {
                 $tmp = self::$head->createContentlessElement('link');
                 $tmp->rel = 'stylesheet';
-                $tmp->href = self::$styleFolder . $style . '.css';
+                $tmp->href = self::$styleFolder . $style . '.css' . (isset(self::$suffix) ? "?" . self::$suffix : "");
             }
             
             public static function addScript ($script) {
                 $tmp = self::$foot->createElement('script');
                 $tmp->type = 'text/javascript';
-                $tmp->src = self::$scriptFolder . $script . '.js';
+                $tmp->src = self::$scriptFolder . $script . '.js' . (isset(self::$suffix) ? "?" . self::$suffix : "");
             }
             
             public static function render () {

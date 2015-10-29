@@ -1,7 +1,7 @@
 <?php
     namespace oohtml;
 
-    if (!class_exists("Create", false)) {
+    //if (!class_exists("Create", false)) {
         class Create {
             private static function applyOptions ($item, $elementOptions) {
                 foreach ($elementOptions as $element => $options) {
@@ -30,5 +30,5 @@
                 return $item;
             }
         }
-    }
+    //}
 ?>

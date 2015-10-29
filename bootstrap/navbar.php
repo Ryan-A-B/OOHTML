@@ -52,23 +52,16 @@
                 "class" => "collapse navbar-collapse"
             ]);
 
-            $menuList = $menu->createElement("ul", [
-                "class" => "nav navbar-nav"
-            ]);
-
-            $this->template = (object)compact("base", "container", "header", "menuToggle", "brand", "menu", "menuList");
+            $this->template = (object)compact("base", "container", "header", "menuToggle", "brand", "menu");
         }
 
-        public function addLink ($text, $href) {
-            $menuList = $this->template->menuList;
+        public function addMenu ($leftAligned = true) {
+            $alignment = "navbar-" . ($leftAligned ? "left" : "right");
 
-            $menuListItem = $menuList->createElement("li");
-
-            $menuListItemLink = $menuListItem->createElement("a", [
-                "href" => "$href"
+            $this->template->menuList = $this->template->menu->createElement("ul", [
+                "class" => "nav navbar-nav $alignment"
             ]);
-            $menuListItemLink->addContent($text);
 
-            return [$menuListItem, $menuListItemLink];
+            return $this->template->menuList;
         }
     }

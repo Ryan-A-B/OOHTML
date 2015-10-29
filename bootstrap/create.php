@@ -1,7 +1,7 @@
 <?php
     namespace oohtml\bootstrap;
 
-    if (!class_exists("Create", false)) {
+    //if (!class_exists("Create", false)) {
         class Create extends \oohtml\Create {
             protected static function panel ($title, \oohtml\Element $parent = null, array $userOptions = array()) {
                 $defaultOptions = [
@@ -13,15 +13,7 @@
                     "body" => []
                 ];
 
-                $elementOptions = [];
-                foreach ($defaultOptions as $element => $ignore) {
-                    if (!is_array($userOptions[$element])) {
-                        $elementOptions[$element] = $defaultOptions[$element];
-                        continue;
-                    }
-
-                    $elementOptions[$element] = array_merge($defaultOptions[$element], $userOptions[$element]);
-                }
+                $elementOptions = array_replace_recursive($defaultOptions, $userOptions);
 
                 $panel = new \StdClass();
 
@@ -63,5 +55,5 @@
                 return [$parent, $modal->modal, $modal, $userOptions];
             }
         }
-    }
+    //}
 ?>

@@ -20,4 +20,8 @@
 
             return current((array)$this->template)->generateHTML();
         }
+
+        public function __get ($element) {
+            return $this->template->$element;
+        }
     }

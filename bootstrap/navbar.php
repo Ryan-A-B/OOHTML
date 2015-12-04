@@ -17,8 +17,8 @@
             ]
         ];
 
-        public function __construct () {
-            $this->options = self::$defaults;
+        public function __construct (array $options = []) {
+            $this->options = array_replace_recursive(self::$defaults, $options);
 
             $base = new \oohtml\Element("nav", [
                 "class" => "navbar"

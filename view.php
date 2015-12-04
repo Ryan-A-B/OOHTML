@@ -31,10 +31,19 @@
                 $tmp->href = self::$styleFolder . $style . '.css' . (isset(self::$suffix) ? "?" . self::$suffix : "");
             }
             
-            public static function addScript ($script) {
-                $tmp = self::$foot->createElement('script');
-                $tmp->type = 'text/javascript';
-                $tmp->src = self::$scriptFolder . $script . '.js' . (isset(self::$suffix) ? "?" . self::$suffix : "");
+            public static function addScript ($script, array $options = []) {
+                extract (array_merge(
+                    [
+                        "location" => self::$foot,
+                        "type" => "text/javascript"
+                    ],
+                    $options
+                ));
+
+                $tmp = $location->createElement("script", [
+                    "type" => $type,
+                    "src" => self::$scriptFolder . $script . '.js' . (isset(self::$suffix) ? "?" . self::$suffix : "")
+                ]);
             }
             
             public static function render () {
